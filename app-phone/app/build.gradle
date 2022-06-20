@@ -21,6 +21,12 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("local.properties").newDataInputStream())
+
+        buildConfigField "String", "API_BASE_URL", "\"${properties.getProperty("API_BASE_URL")}\""
+        buildConfigField "String", "ONESIGNAL_APP_ID", "\"${properties.getProperty("ONESIGNAL_APP_ID")}\""
     }
 
     buildTypes {

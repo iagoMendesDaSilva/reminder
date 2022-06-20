@@ -17,8 +17,8 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.iago.reminder.BuildConfig
 import com.iago.reminder.helpers.Logo
-import com.iago.reminder.utils.Constants
 import com.onesignal.OneSignal
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -48,7 +48,7 @@ fun SplashScreen(navController: NavHostController) {
 
 fun configOnesignal(context: Context) {
     OneSignal.initWithContext(context)
-    OneSignal.setAppId(Constants.ONESIGNAL_APP_ID)
+    OneSignal.setAppId(BuildConfig.ONESIGNAL_APP_ID)
     OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
 }
 

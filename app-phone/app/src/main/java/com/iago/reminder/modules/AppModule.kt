@@ -2,12 +2,12 @@ package com.iago.reminder.modules
 
 import android.content.Context
 import androidx.room.Room
+import com.iago.reminder.BuildConfig
 import com.iago.reminder.api.ReminderApi
 import com.iago.reminder.database.ReminderDao
 import com.iago.reminder.database.ReminderDatabase
 import com.iago.reminder.repository.UserRepository
 import com.iago.reminder.repository.WordRepository
-import com.iago.reminder.utils.Constants
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -49,7 +49,7 @@ object AppModule {
     @Provides
     fun provideApi(): ReminderApi = Retrofit.Builder()
         .addConverterFactory((GsonConverterFactory.create()))
-        .baseUrl(Constants.API_BASE_URL)
+        .baseUrl(BuildConfig.API_BASE_URL)
         .build()
         .create(ReminderApi::class.java)
 

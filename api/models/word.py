@@ -11,6 +11,7 @@ class Word(database.Model):
 class WordSchema(serializer.SQLAlchemyAutoSchema):
     class Meta:
             model = Word
+            include_fk = True
 
 word_schema = WordSchema()
 words_schema = WordSchema(many=True)

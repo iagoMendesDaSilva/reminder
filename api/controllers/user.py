@@ -80,7 +80,7 @@ class UserController:
     def send_email_verify_acccount(self, email):
         try:
             token = urlSafe.dumps(email, salt='email-confirm')
-            msg = Message('Reminder app confirm email', sender = "YOUR EMAIL", recipients = [email])
+            msg = Message('Reminder app confirm email', sender = os.getenv("REMINDER_EMAIL"), recipients = [email])
             link = url_for('verify_account', token=token, _external=True)
             msg.body = 'Your link is {}'.format(link)
             mail.send(msg)
@@ -89,10 +89,10 @@ class UserController:
 
     def send_email_recovery_password(self, email, code):
         try:
-            msg = Message('Reminder recovery password', sender = "YOUR EMAIL", recipients = [email])
+            msg = Message('Reminder recovery password', sender = os.getenv("REMINDER_EMAIL"), recipients = [email])
             msg.body = 'Your code is {}'.format(code)
             mail.send(msg)
-        except:
+        except Exception as err:
             raise MailException 
 
     def verify_email(self, data):
